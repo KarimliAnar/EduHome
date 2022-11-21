@@ -1,0 +1,243 @@
+﻿@model HomeVM
+<!-- Background Area Start -->
+<section id="slider-container" class="slider-area two">
+    <div class="slider-owl owl-theme owl-carousel">
+
+        @foreach (Slider slider in Model.Sliders)
+        {
+            <!-- Start Slingle Slide -->
+            <div class="single-slide item" style="background-image: url(../img/slider/@slider.Image)">
+                <!-- Start Slider Content -->
+                <div class="slider-content-area">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-10 col-md-offset-1">
+                                <div class="slide-content-wrapper">
+                                    <div class="slide-content text-center">
+                                        <h2>@slider.Title </h2>
+                                        <p>@slider.Description </p>
+                                        <a class="default-btn" href="about.html">Learn more</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Start Slider Content -->
+            </div>
+            <!-- End Slingle Slide -->
+        }
+
+    </div>
+</section>
+<!-- Background Area End -->
+<!-- Service Start -->
+<div class="service-area two pt-150 pb-150">
+    <div class="container">
+        <div class="row">
+
+            @foreach (Services services in Model.Services)
+            {
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="single-service">
+                        <h3>@services.Title<a href="teacher.html"></a></h3>
+                        <p>@services.Description</p>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+<!-- Service End -->
+<!-- About Start -->
+<div class="about-area pb-155">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6">
+                <div class="about-content">
+                    <h2>@Html.Raw(Model.About.Title)</h2>
+                    @Html.Raw(Model.About.Description)
+                    <a class="default-btn" href="about.html">view courses</a>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+                <div class="about-img">
+                    <img src="~/img/about/@Model.About.Image" alt="about">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- About End -->
+<div class="courses-area two pt-150 pb-150 text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="section-title">
+                    <img src="img/icon/section1.png" alt="section-title">
+                    <h2>COURSES WE OFFER</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@foreach (Courses courses in Model.Courses)
+{
+
+    <div class="col-md-4 col-sm-6 col-xs-12">
+        <div class="single-course">
+            <div class="course-img">
+                <a href="course-details.html">
+                    <img src="~/img/course/@courses.Image" alt="course">
+                    <div class="course-hover">
+                        <i class="fa fa-link"></i>
+                    </div>
+                </a>
+            </div>
+            <div class="course-content">
+                <h3>@Html.Raw(courses.Title)</h3>
+                @Html.Raw(courses.Description)
+                <a class="default-btn" href="course-details.html">read more</a>
+            </div>
+        </div>
+    </div>
+}
+<!-- Courses Area End -->
+<!-- Notice Start -->
+
+<div class="row">
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="notice-right-wrapper mb-25 pb-25">
+            <h3>TAKE A VIDEO TOUR</h3>
+            <div class="notice-video">
+                <div class="video-icon video-hover">
+                    <a class="video-popup" href="https://www.youtube.com/watch?v=to6Ghf8UL7o">
+                        <i class="zmdi zmdi-play"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="notice-left-wrapper">
+            <h3>notice board</h3>
+            <div class="notice-left">
+                @foreach (Notice notice in Model.Notice)
+                {
+                    <div class="single-notice-left mb-23 pb-20">
+                        <h4>@notice.CreateTime.ToString("d/MMMM/yyyy")</h4>
+                        <p>@notice.Description </p>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<!-- Notice End -->
+<!-- Event Area Start -->
+<div class="event-area two text-center pt-100 pb-145">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="section-title">
+                    <img src="img/icon/section.png" alt="section-title">
+                    <h2>UPCOMMING EVENTS</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+            @foreach (Events Events in Model.Events)
+            {
+                <div class="col-md-6 col-sm-12 col-xs-12">
+                    <div class="single-event mb-35">
+                        <div class="event-img">
+                            <a href="event-details.html"><img src="img/event/@Events.Image" alt="event"></a>
+                        </div>
+                        <div class="event-content text-left">
+                            <h3>@Events.CreateTime</h3>
+                            <h4><a href="event-details.html">@Events.EventName</a></h4>
+                            <ul>
+                                <li><i class="fa fa-clock-o"></i>@Events.StartTime.ToString("hh")-@Events.EndTime.ToString("hh")</li>
+                                <li><i class="fa fa-map-marker"></i>New York City</li>
+                            </ul>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            }
+        </div>
+    </div>
+</div>
+<!-- Event Area End -->
+<!-- Testimonial Area Start -->
+<div class="testimonial-area pt-110 pb-105 text-center">
+    <div class="container">
+        <div class="row">
+            <div class="testimonial-owl owl-theme owl-carousel">
+                <div class="col-md-8 col-md-offset-2 col-sm-12">
+                    <div class="single-testimonial">
+                        <div class="testimonial-info">
+                            <div class="testimonial-img">
+                                <img src="~/img/testimonial/testimonial.jpg" alt="testimonial">
+                            </div>
+                            <div class="testimonial-content">
+                                <p>I must explain to you how all this mistaken idea of denoung pleure and praising pain was born and I will give you a coete account of the system, and expound the actual</p>
+                                <h4>David Morgan</h4>
+                                <h5>Student, CSE</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Testimonial Area End -->
+<!-- Blog Area Start -->
+<div class="blog-area pt-150 pb-150">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="section-title text-center">
+                    <img src="~/img/icon/section.png" alt="section-title">
+                    <h2>LATEST FROM BLOG</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (Blog blog in Model.Blog)
+            {
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="single-blog">
+                        <div class="blog-img">
+                            <a href="blog-details.html"><img src="~/img/blog/@blog.Image" alt="blog"></a>
+                            <div class="blog-hover">
+                                <a href="blog-details.html"><i class="fa fa-link"></i></a>
+                            </div>
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-top">
+                                <p>By @blog.By  /@blog.CreateTime.ToString("MMMM dd,yyyy") /  <i class="fa fa-comments-o"></i> 4</p>
+                            </div>
+                            <div class="blog-bottom">
+                                <h2><a href="blog-details.html">@blog.Title</a></h2>
+                                <a href="blog-details.html">read more</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+    <!-- Blog Area End -->

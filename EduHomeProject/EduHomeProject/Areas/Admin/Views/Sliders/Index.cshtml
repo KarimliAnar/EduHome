@@ -1,0 +1,59 @@
+﻿@model List<Slider>
+
+<div class="card">
+    <h5 class="card-header">Sliders</h5>
+    <div class="d-flex justify-content-end">
+        <a asp-action="Create" style="width: 110px; margin-right: 26px" class="btn btn-primary text-white rounded-pill">Create</a>
+    </div>
+    <div class="table-responsive text-nowrap">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Title</th>
+                    <th>Status</th>
+                    <th style="text-align:right">Actions</th>
+                </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+                @foreach (Slider item in Model)
+                {
+                    <tr>
+
+                        <td>
+                            <img style="width:200px;height:80px;object-fit:cover" src="~/img/slider/@item.Image"/>
+                        </td>
+                        <td>@item.Title</td>
+                        <td>
+                            @if (item.IsDeactive)
+                            {
+                                <span class="text-danger">Deactive</span>
+                            }
+                            else
+                            {
+                                <span class="text-success">Active</span>
+                            }
+                        </td>
+                        <td>
+                            <div class="d-flex justify-content-end">
+                                <a asp-action="Detail" asp-route-id="@item.Id" style="width:110px;margin-right:5px" class="btn btn-warning text-white rounded-pill">Detail</a>
+                                <a asp-action="Update" asp-route-id="@item.Id" style="width: 110px; margin-right: 5px" class="btn btn-success text-white rounded-pill">Update</a>
+
+
+                                @if (item.IsDeactive)
+                                {
+                                    <a asp-action="Activity" asp-route-id="@item.Id" style="width: 110px; margin-right: 5px" class="btn btn-info text-white rounded-pill">Activate</a>
+                                }
+                                else
+                                {
+                                    <a asp-action="Activity" asp-route-id="@item.Id" style="width: 110px; margin-right: 5px" class="btn btn-danger text-white rounded-pill">Deactivate</a>
+                                }
+                            </div>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
